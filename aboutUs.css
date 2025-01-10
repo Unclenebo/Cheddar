@@ -33,7 +33,6 @@ h1 {
     margin-left: 142.79px;
     justify-content: center;
     opacity: 20%;
-    
 }
 
 h4 {
@@ -113,8 +112,7 @@ h4 {
     margin-left: 1200px;
 }
 
-.cancel img:hover {
+.cancel img:hover{
     width: 70px;
-    height:70px;
-    
+    height:70px; 
 }
