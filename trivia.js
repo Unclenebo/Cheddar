@@ -1,3 +1,7 @@
+function naviage(url) {
+    window.location.href = url;
+}
+
 const data = [
     {
         "id": 1,
@@ -82,7 +86,7 @@ const data = [
         "options": ["Brain", "Heart", "Lungs", "Liver"],
         "correctAnswer": "Heart",
         "category": "Biology"
-        }
+    }
 ]
 
 
@@ -166,10 +170,32 @@ const displayQuestion = () => {
             currentQuestionIndex=data.length-1
         }
         localStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
-        
+
         displayQuestion()        
     }
 }
+
+// end trivia/score logic
+const endTrivia = () => {
+    const answers = JSON.parse(localStorage.getItem("answers")) || [];  
+    answers.forEach(answer => {
+        const answeredQuestions = data.find(item => item.id === answer.questionId);
+        if (answer.selectedOption == answeredQuestions.correctAnswer) {
+            score++
+            console.log(answer.selectedOption+' - Correct');
+        }else{
+            console.log(answer.selectedOption+' - wrong');
+            
+        }  
+    });
+
+    console.log("Total qusetions = " + data.length);
+    console.log("Qusetions answered = " + answers.length);
+    console.log("Score = " + score + "/" + data.length);
+    
+}
+
+endTrivia()
 
 let countdownTime = JSON.parse(localStorage.getItem('countdownTime')) || 300;    
 let countdownInterval;
@@ -213,6 +239,7 @@ const resetTimer = () => {
     clearInterval(countdownInterval);
     countdownInterval = null;
     countdownTime = 300; 
+    localStorage.setItem('countdownTime', JSON.stringify(countdownTime))
     countdownDisplay.textContent = formatTime(countdownTime);
 }
 
