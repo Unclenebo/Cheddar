@@ -174,3 +174,33 @@
     color: var(--lighter-text-color);
 }
 
+.total-point{
+    width: fit-content;
+    margin: 2rem auto;
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.score-quote{
+    width: 20rem;
+    color: rgba(255, 233, 89, 1);
+    text-align: center;
+    font-style: 1.1rem;
+    line-height: 1.5;
+    margin: 1rem auto;
+}
+
+.button-nav{
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 7%;
+}
+
+.score-character{
+    width: 23rem;
+    position: absolute;
+    bottom: 0;
+    right: 5rem;
+}
+

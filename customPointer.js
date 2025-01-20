@@ -1,27 +1,27 @@
-// // Create the custom pointer element
-// const pointer = document.createElement("div");
-// pointer.classList.add("custom-pointer");
-// document.body.appendChild(pointer);
+// Create the custom pointer element
+const pointer = document.createElement("div");
+pointer.classList.add("custom-pointer");
+document.body.appendChild(pointer);
 
-// // Move the pointer with the mouse
-// document.addEventListener("mousemove", (e) => {
-//     pointer.style.left = `${e.pageX}px`;
-//     pointer.style.top = `${e.pageY}px`;
-// });
+// Move the pointer with the mouse
+document.addEventListener("mousemove", (e) => {
+    pointer.style.left = `${e.pageX}px`;
+    pointer.style.top = `${e.pageY}px`;
+});
 
-// // Add click effect
-// document.addEventListener("mousedown", () => {
-//     pointer.classList.add("click");
-// });
-// document.addEventListener("mouseup", () => {
-//     pointer.classList.remove("click");
-// });
+// Add click effect
+document.addEventListener("mousedown", () => {
+    pointer.classList.add("click");
+});
+document.addEventListener("mouseup", () => {
+    pointer.classList.remove("click");
+});
 
-// // Add hover effect for buttons and links
-// document.querySelectorAll("button, a, .option-btn").forEach((el) => {
-//     el.addEventListener("mouseenter", () => pointer.classList.add("hover"));
-//     el.addEventListener("mouseleave", () => pointer.classList.remove("hover"));
-// });
+// Add hover effect for buttons and links
+document.querySelectorAll("button, a, .option-btn").forEach((el) => {
+    el.addEventListener("mouseenter", () => pointer.classList.add("hover"));
+    el.addEventListener("mouseleave", () => pointer.classList.remove("hover"));
+});
 
 const fullscreenBtn = document.getElementById("fullscreen-btn");
 

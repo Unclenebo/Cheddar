@@ -46,7 +46,7 @@ const displayQuestion = () => {
     let currentQuestion = data[currentQuestionIndex];
     let options = currentQuestion.options
     let questionNumber = currentQuestionIndex + 1;
-    questionDisplay.innerHTML = currentQuestion.question;
+    questionDisplay.innerHTML = `${currentQuestion.question}`;
     
     answerDisplay.innerHTML = "";    
     
@@ -99,15 +99,27 @@ const displayQuestion = () => {
         localStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
         displayQuestion()
     }
+
+    if (currentQuestionIndex==data.length-1) {
+        nextButton.innerHTML = "finish"
+    }else{
+        nextButton.innerHTML = "<img src='./arrow_forward.png'>"
+    }
     
     nextButton.onclick = () => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex>=data.length-1) {
-            currentQuestionIndex=data.length-1
+        if (nextButton.textContent != "finish") {
+                currentQuestionIndex++;
+                if (currentQuestionIndex>=data.length-1) {
+                    currentQuestionIndex=data.length-1
+                }
+                localStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
+        
+                displayQuestion()    
+        }else{
+            if (confirm("Are you sure you want to finish the game?")) {
+                endTrivia()
+            }
         }
-        localStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
-
-        displayQuestion()        
     }
 }
 
@@ -122,19 +134,18 @@ const endTrivia = () => {
         }else{
             console.log(answer.selectedOption + ' - wrong');
             
-        }  
+        } 
     });
+    resetTimer()
+    localStorage.clear()
+    document.getElementsByTagName('body')[0].innerHTML = scorePage(score)
+
 
     console.log("Total qusetions = " + data.length);
     console.log("Qusetions answered = " + answers.length);
     console.log("Score = " + score + "/" + data.length);
     
 }
-
-startTrivia()
-endTrivia()
-});
-
 
 
 let countdownTime = JSON.parse(localStorage.getItem('countdownTime')) || 300;    
@@ -165,14 +176,10 @@ const startTimer = () => {
                 clearInterval(countdownInterval);
                 countdownInterval = null;
                 alert("Time's up!");
+                endTrivia()
             }
         }, 1000);
     }
-}
-
-const stopTimer = () => {
-    clearInterval(countdownInterval);
-    countdownInterval = null;
 }
 
 const resetTimer = () => {
@@ -182,5 +189,18 @@ const resetTimer = () => {
     localStorage.setItem('countdownTime', JSON.stringify(countdownTime))
     countdownDisplay.textContent = formatTime(countdownTime);
 }
+
+const stopTimer = () => {
+    clearInterval(countdownInterval);
+    countdownInterval = null;
+}
+
+
+startTrivia()
+});
+
+
+
+
 
 
