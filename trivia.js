@@ -1,95 +1,31 @@
+const urlParams = new URLSearchParams(window.location.search);
+category = urlParams.get('category');
+let pagination = 10;
+
+
+
 function naviage(url) {
     window.location.href = url;
 }
 
-const data = [
-    {
-        "id": 1,
-        "question": "What is the name of the man that invented suya in Nigeria",
-        "options": ["Solomon", "Judas", "Jamil", "Adam"],
-        "correctAnswer": "Jamil",
-        "category": "History"
-    },
-    {
-        "id": 2,
-        "question": "What year did Nigeria gain independence",
-        "options": ["1960", "1970", "1957", "1963"],
-        "correctAnswer": "1960",
-        "category": "History"
-    },
-    {
-        "id": 3,
-        "question": "Which planet is known as the Red Planet",
-        "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-        "correctAnswer": "Mars",
-        "category": "Science"
-    },
-    {
-        "id": 4,
-        "question": "Who wrote the play 'Romeo and Juliet'",
-        "options": ["William Shakespeare", "Chinua Achebe", "Wole Soyinka", "Mark Twain"],
-        "correctAnswer": "William Shakespeare",
-        "category": "Literature"
-    },
-    {
-        "id": 5,
-        "question": "What is the largest mammal in the world",
-        "options": ["Elephant", "Blue Whale", "Giraffe", "Orca"],
-        "correctAnswer": "Blue Whale",
-        "category": "Science"
-    },
-    {
-        "id": 6,
-        "question": "Which country is known as the Land of the Rising Sun",
-        "options": ["China", "Japan", "South Korea", "India"],
-        "correctAnswer": "Japan",
-        "category": "Geography"
-    },
-    {
-        "id": 7,
-        "question": "What is the chemical symbol for water",
-        "options": ["H2O", "O2", "CO2", "HO"],
-        "correctAnswer": "H2O",
-        "category": "Science"
-    },
-    {
-        "id": 8,
-        "question": "Who was the first President of Nigeria",
-        "options": ["Nnamdi Azikiwe", "Abubakar Tafawa Balewa", "Obafemi Awolowo", "Yakubu Gowon"],
-        "correctAnswer": "Nnamdi Azikiwe",
-        "category": "History"
-    },
-    {
-        "id": 9,
-        "question": "What is the capital city of Australia",
-        "options": ["Sydney", "Melbourne", "Canberra", "Perth"],
-        "correctAnswer": "Canberra",
-        "category": "Geography"
-    },
-    {
-        "id": 10,
-        "question": "What is the smallest prime number",
-        "options": ["1", "2", "3", "5"],
-        "correctAnswer": "2",
-        "category": "Mathematics"
-    },
-    {
-        "id": 11,
-        "question": "What is the currency of Japan",
-        "options": ["Yen", "Won", "Dollar", "Rupee"],
-        "correctAnswer": "Yen",
-        "category": "Economics"
-    },
-    {
-        "id": 12,
-        "question": "Which organ is responsible for pumping blood in the human body",
-        "options": ["Brain", "Heart", "Lungs", "Liver"],
-        "correctAnswer": "Heart",
-        "category": "Biology"
-    }
-]
+let data = []
 
 
+async function fetchData() {
+    return fetch(`http://localhost:8000/api/questions/${category}/${pagination}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
+
+fetchData().then(data => {
+    
 const questionDisplay = document.getElementById('question');
 const answerDisplay = document.getElementById('answer-cont');
 const prevButton = document.getElementById('prevButton');
@@ -179,12 +115,12 @@ const displayQuestion = () => {
 const endTrivia = () => {
     const answers = JSON.parse(localStorage.getItem("answers")) || [];  
     answers.forEach(answer => {
-        const answeredQuestions = data.find(item => item.id === answer.questionId);
-        if (answer.selectedOption == answeredQuestions.correctAnswer) {
+        const answeredQuestions = data.find(item => item.id === answer.questionId)
+        if (answeredQuestions && answer.selectedOption == answeredQuestions.correct_answer) {
             score++
-            console.log(answer.selectedOption+' - Correct');
+            console.log(answer.selectedOption + ' - Correct');
         }else{
-            console.log(answer.selectedOption+' - wrong');
+            console.log(answer.selectedOption + ' - wrong');
             
         }  
     });
@@ -195,7 +131,11 @@ const endTrivia = () => {
     
 }
 
+startTrivia()
 endTrivia()
+});
+
+
 
 let countdownTime = JSON.parse(localStorage.getItem('countdownTime')) || 300;    
 let countdownInterval;
@@ -243,6 +183,4 @@ const resetTimer = () => {
     countdownDisplay.textContent = formatTime(countdownTime);
 }
 
-
-startTrivia()
 

@@ -28,8 +28,14 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 const username = userInfo.username;  
 const age = userInfo.age;  
 
-const startGame = () => {
-    naviage("./trivia-section.html")
+const startGame = (category) => {
+    let url = "./trivia-section.html";
+    
+    if (category) {
+        url += `?category=${category}`;
+    }
+    
+    naviage(url);
 }
 
 
