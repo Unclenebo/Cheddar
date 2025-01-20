@@ -1,74 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Danfo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    width: 1440px;
-    height: 1000px;
-    justify-content: center;
-    align-items: center;
-    background-image: url(./Grid.png);
-    background-color: #16141B;
-    overflow:scroll;
-    
-}
-
-.logo {
-    width: 46px;
-    height: 46px;
-    margin-top: 60px;
-    margin-left: 697px;
-    position: absolute;
-}
-
-h1 {
-    position: absolute;
-    width: 1154px;
-    height: 258px;
-    margin-top: 143px;
-    margin-left: 142.79px;
-    justify-content: center;
-}
-
-h4 {
-    position: absolute;
-    font-family: "Inter", sans-serif;
-    width: 41px;
-    height: 10px;
-    margin-top: 445px;
-    margin-left: 1051px;
-    font-size: 14px;
-    color: #FFBDBD;
-    font-weight: 700;
-    text-align: left;
-}
-
-.navbar {
-    position: absolute;
-    width: 195.29px;
-    height:75px;
-    margin-top: 471px;
-    margin-left: 1051px;
-    list-style: none;
-}
-
-ul {
-    list-style: none;
-}
-
-.chesse {
-    position: absolute;
-    width: 735.16px;
-    height: 300px;
-    margin-top: 940px;
-    margin-left: 0;
-    z-index: 1;
-}
-
 .coolrat{
     position: absolute;
     width: 735.16px;
@@ -78,48 +9,139 @@ ul {
     z-index: 1;
 }
 
-.arcade {
-    position: absolute;
-    width: 582.56px;
-    height: 1008px;
-    margin-top: 330px;
-    margin-left: 429px;
-    z-index: 2;
-}
-
-
-.paragraph {
-    position: absolute;
-    color: white;
-    font-family: "Inter", sans-serif;
-    font-weight: 800;
-    width: 249px;
-    height: 30px;
-    font-size: 14px;
-    margin-top: 454px;
-    margin-left: 150px;
-}
-
-.handles {
-    position: absolute;
-    justify-items: center;
-    display: inline;
-    width: 237px;
-    height: 35.96px;
-    margin-top: 530px;
-    margin-left: 150px;
-    justify-content: space-between;
-}
-
 #gap {
     margin-left: 20.28px;
 }
 
-ul li {
-    margin-top: 10px;
+.text{
+    width: fit-content;
+    /* padding: 10px 0px; */
 }
 
-li a img:hover {
-    width: 220px;
-    animation: shake 0.5s ease-in-out infinite;
+.nav-link a{
+    display: flex;
+    
+}
+
+
+
+ul li {
+    margin: 20px 0px;
+}
+
+.nav-link .pointer {
+    display: none;
+    animation: none;
+}
+
+.txt{
+    display: flex;
+    width: fit-content;
+    gap: 2rem;
+
+}
+
+/* chinweike */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{    
+    -webkit-user-drag: none; 
+}
+
+body {
+    height: 1vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./Grid.png);
+    background-color: #16141B;
+    overflow: hidden;
+    padding: 2.7rem 0rem;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header .cheddar-txt{
+    width: 55rem;
+}
+
+.section{
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.sect1,
+.sect3{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.sect1 .paragraph {
+    color: white;
+    font-family: "Inter", sans-serif;
+    width: 249px;
+    height: 30px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.sect1 .handles {
+    justify-items: center;
+    display: inline;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+.sect2{
+    z-index: 999;
+}
+
+.sect2 img{
+    width: 22rem;
+    margin-top: -7rem;
+}
+
+.sect3 h4{
+    font-family: "Inter", sans-serif;
+    width: 41px;
+    height: 10px;
+    font-size: 14px;
+    color: #FFBDBD;
+    font-weight: 700;
+    text-align: left;
+}
+
+.navbar {
+    width: 195.29px;
+    height:75px;
+    list-style: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.chesse {
+    margin-top: -25rem;
+    width: 735.16px;
+    height: 300px;
+    z-index: 1;
+}
+
+.no-select{
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
 }

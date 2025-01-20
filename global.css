@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Danfo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Inter";
+}
+
+:root{
+    --cheedar-yellow: #ffe959;
+    --cheedar-dark-blue: rgba(27, 24, 34, 1);
+    --lighter-text-color: rgba(133, 122, 159, 1);
+}
+
+.fullScreen-btn{
+    background-color: transparent;
+    color: var(--cheedar-yellow);
+    border: none;
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    cursor: pointer;
+    right: 2%;
+    top: 93vh !important;
+    z-index: 999;
+}
+
+.cheddy-head{
+    width: 2.5rem;
+}
+
+.cheddy-head:hover{
+    animation: swing .5s;
+}
+
+.cheddy-head:active{
+    scale: .95;
+}
+
+.primary-btn{
+    height: 3.5rem;
+    padding: 1rem 1.5rem;
+    border: 2px solid rgba(255, 233, 89, 1);
+    border-radius: .6rem;
+    outline: none;
+    background-color: rgba(255, 233, 89, 1);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+}
