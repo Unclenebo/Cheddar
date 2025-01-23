@@ -2,17 +2,13 @@ const urlParams = new URLSearchParams(window.location.search);
 category = urlParams.get('category');
 let pagination = 10;
 
-
-
 function naviage(url) {
     window.location.href = url;
 }
 
-let data = []
-
-
+// fetch data from the api
 async function fetchData() {
-    return fetch(`http://localhost:8000/api/questions/${category}/${pagination}`)
+    return fetch(`https://quizapp-vsl6.vercel.app/api/questions/${category}/${pagination}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -25,7 +21,7 @@ async function fetchData() {
 }
 
 fetchData().then(data => {
-    
+
 const questionDisplay = document.getElementById('question');
 const answerDisplay = document.getElementById('answer-cont');
 const prevButton = document.getElementById('prevButton');
@@ -89,8 +85,6 @@ const displayQuestion = () => {
         }
     })
 
-
-    
     prevButton.onclick = () => {
         currentQuestionIndex--
         if (currentQuestionIndex<=0) {
