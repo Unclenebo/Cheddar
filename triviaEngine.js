@@ -24,9 +24,10 @@ if (userForm) {
     });
     
 }
-const userInfo = JSON.parse(localStorage.getItem("userInfo"));  
-const username = userInfo.username;  
-const age = userInfo.age;  
+
+// const userInfo = JSON.parse(localStorage.getItem("userInfo"));  
+// const username = userInfo.username;  
+// const age = userInfo.age;  
 
 const startGame = (category) => {
     let url = "./trivia-section.html";
@@ -34,8 +35,10 @@ const startGame = (category) => {
     if (category) {
         url += `?category=${category}`;
     }
-    
+
     naviage(url);
+
+    sessionStorage.setItem('started', true)
 }
 
 
