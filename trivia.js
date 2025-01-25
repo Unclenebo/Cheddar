@@ -30,14 +30,11 @@ if (started) {
     
 }
 
-
-let currentQuestionIndex = 0;
 let score = 0;
-
 
 const startTrivia = () => {
     sessionStorage.setItem('started', false)
-    currentQuestionIndex = JSON.parse(sessionStorage.getItem('currentQuestionIndex')) || 0;
+    let currentQuestionIndex = JSON.parse(sessionStorage.getItem('currentQuestionIndex')) || 0;
     score = 0;
     
     displayQuestion(JSON.parse(sessionStorage.getItem('data')))
@@ -50,7 +47,7 @@ window.addEventListener('load',() => {
 })
 
 const displayQuestion = (data) => {
-    currentQuestionIndex = JSON.parse(sessionStorage.getItem('currentQuestionIndex')) || 0;
+    let currentQuestionIndex = JSON.parse(sessionStorage.getItem('currentQuestionIndex')) || 0;
     const questionDisplay = document.getElementById('question');
     const answerDisplay = document.getElementById('answer-cont');
     const prevButton = document.getElementById('prevButton');
