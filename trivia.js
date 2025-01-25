@@ -9,25 +9,30 @@ category = urlParams.get('category');
 let pagination = 10;
 
 // fetch data from the api
-
 if (started) {
     async function fetchData() {
-        return fetch(`http://127.0.0.1:8000/api/questions/${category}/${pagination}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/questions/${category}/${pagination}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            sessionStorage.setItem('data', JSON.stringify(data));
+            return data;
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+        }
     }
-    
+
     fetchData().then(data => {
-        sessionStorage.setItem('data', JSON.stringify(data))
-    })
-    
+        if (data) {
+            startTrivia();
+        }
+    });
+} else {
+    window.addEventListener('load', () => {
+        startTrivia();
+    });
 }
 
 
@@ -37,7 +42,6 @@ let score = 0;
 
 const startTrivia = () => {
     sessionStorage.setItem('started', false)
-    currentQuestionIndex = JSON.parse(sessionStorage.getItem('currentQuestionIndex')) || 0;
     score = 0;
     
     displayQuestion(JSON.parse(sessionStorage.getItem('data')))
@@ -45,12 +49,9 @@ const startTrivia = () => {
 
 }
 
-window.addEventListener('load',() => {
-    startTrivia()
-})
-
 const displayQuestion = (data) => {
-    currentQuestionIndex = JSON.parse(sessionStorage.getItem('currentQuestionIndex')) || 0;
+    let currentQuestionIndex = Number(JSON.parse(sessionStorage.getItem('currentQuestionIndex'))) || 0;
+
     const questionDisplay = document.getElementById('question');
     const answerDisplay = document.getElementById('answer-cont');
     const prevButton = document.getElementById('prevButton');
