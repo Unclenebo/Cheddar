@@ -31,7 +31,10 @@ if (started) {
     });
 } else {
     window.addEventListener('load', () => {
-        startTrivia();
+        // if (JSON.parse(sessionStorage.getItem('page')) == "score"){
+        //     document.getElementsByTagName('body')[0].innerHTML = scorePage(score)
+        // }        
+        startTrivia();        
     });
 }
 
@@ -44,12 +47,13 @@ const startTrivia = () => {
     sessionStorage.setItem('started', false)
     score = 0;
     
-    displayQuestion(JSON.parse(sessionStorage.getItem('data')))
-    startTimer(JSON.parse(sessionStorage.getItem('data')))
+    displayQuestion()
+    startTimer()
 
 }
 
-const displayQuestion = (data) => {
+const displayQuestion = () => {
+    let data = JSON.parse(sessionStorage.getItem('data'))
     let currentQuestionIndex = Number(JSON.parse(sessionStorage.getItem('currentQuestionIndex'))) || 0;
 
     const questionDisplay = document.getElementById('question');
@@ -66,7 +70,7 @@ const displayQuestion = (data) => {
     countdownDisplay.textContent = formatTime(countdownTime);  
 
     options.map((option)=>{
-        answerDisplay.innerHTML  += `<button class="answer" id="answerButton">${option}</button> `
+        answerDisplay.innerHTML  += `<button class="answer answer-btn" id="answerButton">${option}</button> `
     })
     
     let answerButtons = document.querySelectorAll("#answerButton")
@@ -152,16 +156,19 @@ const endTrivia = (data) => {
         } 
     });
     resetTimer()
-    sessionStorage.clear()
+    // sessionStorage.clear()
+    sessionStorage.setItem('page', JSON.stringify('score'))
     document.getElementsByTagName('body')[0].innerHTML = scorePage(score)
+    console.log(JSON.parse(localStorage.getItem('page')));
+    
 
-
-    console.log("Total qusetions = " + data.length);
-    console.log("Qusetions answered = " + answers.length);
-    console.log("Score = " + score + "/" + data.length);
+    let reviewBtn = document.querySelector(".reviewBtn")
+    alert(reviewBtn)
+    reviewBtn.addEventListener('click', ()=>{
+        naviage('./review.html')
+    })
     
 }
-
 
 let countdownTime = JSON.parse(sessionStorage.getItem('countdownTime')) || 300;    
 let countdownInterval;
@@ -173,7 +180,8 @@ function formatTime(seconds) {
     return `${minutes}:${secs}`;
 }
 
-const startTimer = (data) => {
+const startTimer = () => {
+    const data = JSON.parse(sessionStorage.getItem('data'))
     const countdownDisplay = document.getElementById('countdown-timer');
     
     if (!countdownInterval) {

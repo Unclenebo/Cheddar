@@ -10,13 +10,8 @@
 </head>
 <body>
 
-        <audio id="game-music" autoplay loop>
-            <source src="./cheddar-entrance.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-
     <div class="container no-select">
-
+        
         <div class="header">    
             <a href="./index.html" onclick="event.preventDefault(); playSoundAndNavigate('./cheddar-home.mp3', './')" ><img src="./cheddy-head 2.png" alt="" class="cheddy-head"></a>
             <img src="./Cheddar.png" alt="h1" class="cheddar-txt">
@@ -40,7 +35,7 @@
             <div class="sect2">
                 <a onclick="event.preventDefault(); playSoundAndNavigate('./cheddar-play.mp3', './user-info.html');"><img src="./Property 1=Variant2.png" alt="" class="acrade"></a>
             </div>
-
+            
             <div class="sect3">
                 <h4>MENU</h4>
                 <div class="navbar">
@@ -54,25 +49,18 @@
         </div> 
         
         <button id="fullscreen-btn" class="fullScreen-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffe959"><path d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z"/></svg></button>
-
+        
 
         <!-- <div class="chesse">
             <img src="./cheddar cheese.png" alt="">
         </div> -->
-
+        
         <!-- <div class="coolrat">
             <img src="./Cheddy_BTC.png" alt="">
         </div> -->
     </div>
 
     <script src="script.js"></script>
-    <script>
-        function playSound(src) {
-            const audio = new Audio(src);
-            audio.play();
-        }
-    </script>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

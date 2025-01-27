@@ -39,6 +39,7 @@ const startGame = (category) => {
     naviage(url);
 
     sessionStorage.setItem('started', true)
+    sessionStorage.setItem('page', 'trivia')
 }
 
 

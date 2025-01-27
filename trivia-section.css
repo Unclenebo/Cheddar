@@ -141,16 +141,30 @@
     border-radius: 10px;
     font-size: 30px;
     font-weight: 500;
-    opacity: 0.7;
+    opacity: 1; 
     transition: all 0.1s ease;
 }
 
-.selected,
-.trivia-answer-cont button:hover {
-    background-color: #ffde5a80!important; 
-    opacity: 1; 
+.answer-btn:hover,
+.selected {
+    background-color: rgba(255, 233, 89, 1)!important;
+    border: 2px solid  rgba(255, 233, 89, 1)!important;
+    color: rgba(21, 21, 27, 1) !important; 
 }
 
+.correct {
+    background-color: rgba(105, 255, 68, 1)!important;
+    border: 2px solid rgba(105, 255, 68, 1)!important;
+
+    color: rgba(21, 21, 27, 1) !important; 
+}
+
+.wrong {
+    background-color: rgba(255, 56, 56, 1)!important;
+    border: 2px solid rgba(255, 56, 56, 1)!important;
+
+    color: rgba(21, 21, 27, 1) !important; 
+}
 
 .trivia-answer-cont button:active {
     scale: .9;

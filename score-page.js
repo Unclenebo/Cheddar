@@ -64,7 +64,7 @@ const scorePage = (score)=> {
             <h1 class="total-point" id="total-point">${score} pts</h1>
             <p class="score-quote" id="score-quote">"${quote}"</p>
             <div class="button-nav">
-                <button class="primary-btn">Replay</button><a href="./index.html"><button class="primary-btn">Go to Home</button></a><button class="primary-btn">Review</button>
+                <button class="primary-btn">Replay</button><a href="./index.html"><button class="primary-btn">Go to Home</button></a><button class="primary-btn reviewBtn">Review</button>
             </div>
             <img src="${character}" class="score-character" alt="">
         </section>
