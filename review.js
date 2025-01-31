@@ -1,8 +1,9 @@
+import { navigate } from './script.js';
+
 const review = ()=>{
     let data = JSON.parse(sessionStorage.getItem('data'))
     let answers = JSON.parse(sessionStorage.getItem('answers'))
     sessionStorage.setItem('currentQuestionIndex', 0)
-
 
     const displayQuestion = () => {
         let currentQuestionIndex = Number(JSON.parse(sessionStorage.getItem('currentQuestionIndex'))) || 0;
@@ -49,29 +50,35 @@ const review = ()=>{
             }
             sessionStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
             displayQuestion()
-    
         }
     
         if (currentQuestionIndex==data.length-1) {
-            nextButton.innerHTML = "Exit"
+            nextButton.innerHTML = 'Exit <img src="./arrow_forward.png" alt="">';
+            nextButton.classList.remove('icon-button');
+            nextButton.classList.add('primary-btn');
         }else{
+            nextButton.classList.add('icon-button');
+            nextButton.classList.remove('primary-btn');
             nextButton.innerHTML = "<img src='./arrow_forward.png'>"
         }
         
         nextButton.onclick = () => {
-            if (nextButton.textContent != "Exit") {
-                    currentQuestionIndex++;
-                    if (currentQuestionIndex>=data.length-1) {
-                        currentQuestionIndex=data.length-1
-                    }
-                    sessionStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
-            
-                    displayQuestion()
-        
-            }else{
+            if (!nextButton.textContent.includes("Exit")) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex >= data.length - 1) {
+                    currentQuestionIndex = data.length - 1;
+                }
+                sessionStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex));
+                displayQuestion();
+            } else {
                 // Exit func
-                sessionStorage.clear()
-                window.location.href = "./index.html"
+                let totalQuestions = JSON.parse(sessionStorage.getItem('data')).length
+                let answers = JSON.parse(sessionStorage.getItem('answers'))
+                let questionsAnswered = answers ? answers.length : 0;
+                let score = JSON.parse(sessionStorage.getItem('score'))
+                let correctlyAnswered = score / 10
+                alert(`Here's your stats :\nTotal questions: ${totalQuestions}, Total questions answered: ${questionsAnswered}, Correctly answered: ${correctlyAnswered}, Mark per Question: 10, Total score: ${score}Pts`)
+                navigate('./score-page.html');
             }
         }
     }

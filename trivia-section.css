@@ -23,6 +23,11 @@
     display: flex;
     justify-content: space-between;
 }
+.nav-bar .primary-btn{
+    height: 3.3rem;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+}
 
 .icon-button{
     background-color: var(--cheedar-yellow);
@@ -33,6 +38,9 @@
     outline: none;
     cursor: pointer;
     transition: all .1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-button:hover{
@@ -43,8 +51,8 @@
     scale: .9;
 }
 
+.nav-bar .primary-btn img,
 .icon-button img{
-    background-color: var(--cheedar-yellow);
     height: 2.3rem;
     width: 2.3rem;
 }
