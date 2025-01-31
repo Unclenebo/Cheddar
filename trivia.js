@@ -12,7 +12,7 @@ let pagination = 10;
 if (started) {
     async function fetchData() {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/questions/${category}/${pagination}`);
+            const response = await fetch(`quizapp-vsl6.vercel.app/api/questions/${category}/${pagination}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
