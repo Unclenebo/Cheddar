@@ -12,7 +12,7 @@ let pagination = 10;
 if (started) {
     async function fetchData() {
         try {
-            const response = await fetch(`https://quizapp-vsl6.vercel.app/api/questions/${category}/${pagination}`);
+            const response = await fetch(`http://127.0.0.1:8000/api/questions/${category}/${pagination}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -31,7 +31,7 @@ if (started) {
     });
 } else {
     window.addEventListener('load', () => {
-        startTrivia();
+        startTrivia();        
     });
 }
 
@@ -44,12 +44,13 @@ const startTrivia = () => {
     sessionStorage.setItem('started', false)
     score = 0;
     
-    displayQuestion(JSON.parse(sessionStorage.getItem('data')))
-    startTimer(JSON.parse(sessionStorage.getItem('data')))
+    displayQuestion()
+    startTimer()
 
 }
 
-const displayQuestion = (data) => {
+const displayQuestion = () => {
+    let data = JSON.parse(sessionStorage.getItem('data'))
     let currentQuestionIndex = Number(JSON.parse(sessionStorage.getItem('currentQuestionIndex'))) || 0;
 
     const questionDisplay = document.getElementById('question');
@@ -66,7 +67,7 @@ const displayQuestion = (data) => {
     countdownDisplay.textContent = formatTime(countdownTime);  
 
     options.map((option)=>{
-        answerDisplay.innerHTML  += `<button class="answer" id="answerButton">${option}</button> `
+        answerDisplay.innerHTML  += `<button class="answer answer-btn" id="answerButton">${option}</button> `
     })
     
     let answerButtons = document.querySelectorAll("#answerButton")
@@ -145,23 +146,13 @@ const endTrivia = (data) => {
         const answeredQuestions = data.find(item => item.id === answer.questionId)
         if (answeredQuestions && answer.selectedOption == answeredQuestions.correct_answer) {
             score = score + 10
-            console.log(answer.selectedOption + ' - Correct');
-        }else{
-            console.log(answer.selectedOption + ' - wrong');
-            
-        } 
+        }
     });
     resetTimer()
-    sessionStorage.clear()
-    document.getElementsByTagName('body')[0].innerHTML = scorePage(score)
-
-
-    console.log("Total qusetions = " + data.length);
-    console.log("Qusetions answered = " + answers.length);
-    console.log("Score = " + score + "/" + data.length);
+    sessionStorage.setItem('score', JSON.stringify(score))
+    window.location.href = "./score-page.html"
     
 }
-
 
 let countdownTime = JSON.parse(sessionStorage.getItem('countdownTime')) || 300;    
 let countdownInterval;
@@ -173,7 +164,8 @@ function formatTime(seconds) {
     return `${minutes}:${secs}`;
 }
 
-const startTimer = (data) => {
+const startTimer = () => {
+    const data = JSON.parse(sessionStorage.getItem('data'))
     const countdownDisplay = document.getElementById('countdown-timer');
     
     if (!countdownInterval) {

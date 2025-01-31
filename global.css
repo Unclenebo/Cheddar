@@ -1,7 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Danfo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    font-family: "Inter";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: none !important;
+}
+
+a{
+    text-decoration: none;
+}
+
+.custom-pointer {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-image: url('./custom\ cusor.png'); 
+    background-size: cover;
+    pointer-events: none; 
+    transform: translate(-50%, -50%); 
+    transition: transform 0.15s ease;
+    z-index: 999;
+}
+
+.custom-pointer.click {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.custom-pointer.hover {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 :root{
