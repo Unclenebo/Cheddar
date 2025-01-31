@@ -116,25 +116,27 @@ const displayQuestion = () => {
     }
 
     if (currentQuestionIndex==data.length-1) {
-        nextButton.innerHTML = "finish"
+        nextButton.innerHTML = 'Finish <img src="./arrow_forward.png" alt="">';
+        nextButton.classList.remove('icon-button');
+        nextButton.classList.add('primary-btn');
     }else{
+        nextButton.classList.remove('primary-btn');
+        nextButton.classList.add('icon-button');
         nextButton.innerHTML = "<img src='./arrow_forward.png'>"
     }
     
     nextButton.onclick = () => {
-        if (nextButton.textContent != "finish") {
-                currentQuestionIndex++;
-                if (currentQuestionIndex>=data.length-1) {
-                    currentQuestionIndex=data.length-1
-                }
-                sessionStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex))
-        
-                displayQuestion(JSON.parse(sessionStorage.getItem('data')))
-    
-        }else{
+        if (nextButton.textContent.toLowerCase().includes("finish")) {
             if (confirm("Are you sure you want to finish the game?")) {
                 endTrivia(JSON.parse(sessionStorage.getItem('data')))
             }
+        } else {
+            currentQuestionIndex++;
+            if (currentQuestionIndex >= data.length - 1) {
+            currentQuestionIndex = data.length - 1;
+            }
+            sessionStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex));
+            displayQuestion(JSON.parse(sessionStorage.getItem('data')));
         }
     }
 }

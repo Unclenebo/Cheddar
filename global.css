@@ -12,26 +12,6 @@ a{
     text-decoration: none;
 }
 
-.custom-pointer {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-image: url('./custom\ cusor.png'); 
-    background-size: cover;
-    pointer-events: none; 
-    transform: translate(-50%, -50%); 
-    transition: transform 0.15s ease;
-    z-index: 999;
-}
-
-.custom-pointer.click {
-    transform: translate(-50%, -50%) scale(1.2);
-}
-
-.custom-pointer.hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
 :root{
     --cheedar-yellow: #ffe959;
     --cheedar-dark-blue: rgba(27, 24, 34, 1);
@@ -77,4 +57,26 @@ a{
     align-items: center;
     justify-content: center;
     gap: .25rem;
+}
+
+/* Custom pointer styles */
+
+.custom-pointer {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-image: url('./custom\ cusor.png'); 
+    background-size: cover;
+    pointer-events: none; 
+    transform: translate(-50%, -50%); 
+    transition: transform 0.15s ease;
+    z-index: 999;
+}
+
+.custom-pointer.click {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.custom-pointer.hover {
+    transform: translate(-50%, -50%) scale(1.1);
 }

@@ -1,3 +1,22 @@
+// Start playing sound on page load
+window.addEventListener('load', () => {
+    const audio = new Audio('./cheddar-entrance.mp3');
+    audio.loop = true;
+    // audio.play();
+});
+
+// This function takes in a url to an audio file and when called, 
+// and plays the sound when the button is clicked
+function playSoundAndNavigate(soundUrl, targetUrl) {
+    const audio = new Audio(soundUrl);
+    audio.play();
+    setTimeout(() => {
+        window.location.href = targetUrl;
+    }, 500);
+}
+
+// Custom Pointer Logic
+
 // Create the custom pointer element
 const pointer = document.createElement("div");
 pointer.classList.add("custom-pointer");
@@ -38,9 +57,9 @@ const updateFullscreenIcon = () => {
     }
 };
 
-// Function to toggle fullscreen mode
+// Fullscreen logic
 fullscreenBtn.addEventListener("click", () => {
-    const elem = document.documentElement; // Select the whole document
+    const elem = document.documentElement; 
 
     if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
         // Enter fullscreen
@@ -61,7 +80,7 @@ fullscreenBtn.addEventListener("click", () => {
         } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
         }
-        localStorage.removeItem("isFullscreen"); // Remove fullscreen state
+        localStorage.removeItem("isFullscreen");
     }
 });
 
@@ -77,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             elem.msRequestFullscreen();
         }
     }
-    updateFullscreenIcon(); // Set correct icon on load
+    updateFullscreenIcon(); 
 });
 
 // Listen for fullscreen change events
