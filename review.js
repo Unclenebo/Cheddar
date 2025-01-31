@@ -11,10 +11,8 @@ const review = ()=>{
         const answerDisplay = document.getElementById('answer-cont');
         const prevButton = document.getElementById('prevButton');
         const nextButton = document.getElementById('nextButton');
-        const countdownDisplay = document.getElementById('countdown-timer');
         let currentQuestion = data[currentQuestionIndex];
         let options = currentQuestion.options
-        let questionNumber = currentQuestionIndex + 1;
         questionDisplay.innerHTML = `${currentQuestion.question}`;
         
         answerDisplay.innerHTML = "";  
@@ -27,22 +25,21 @@ const review = ()=>{
         answerButtons.forEach((button)=>{
             let questionId = currentQuestion.id
             // show selected options 
-            const answers = JSON.parse(sessionStorage.getItem("answers")) || [];
-            const aIndex = answers.findIndex(item => item.questionId === questionId);
-            const answeredQuestions = data.find(item => item.id === answers[aIndex].questionId)
-            if (button.textContent == answeredQuestions.correct_answer){
+            if (button.textContent == data.find(item => item.id === currentQuestion.id).correct_answer) {
                 button.classList.add('correct')
             }
-            if (aIndex !== -1) {
-                if (button.textContent == answers[aIndex].selectedOption) {
-                    if (answers[aIndex].selectedOption != answeredQuestions.correct_answer) {
-                        button.classList.add('wrong')
+            if (answers) {
+                const aIndex = answers.findIndex(item => item.questionId === questionId);
+                if (aIndex !== -1) {
+                    const answeredQuestions = data.find(item => item.id === answers[aIndex].questionId)
+                    if (button.textContent == answers[aIndex].selectedOption) {
+                        if (answers[aIndex].selectedOption != answeredQuestions.correct_answer) {
+                            button.classList.add('wrong')
+                        }
                     }
                 }
             }
-
-            console.log("Total qusetions = " + data.length);
-            console.log("Qusetions answered = " + answers.length);
+            
         })
     
         prevButton.onclick = () => {
@@ -73,6 +70,8 @@ const review = ()=>{
         
             }else{
                 // Exit func
+                sessionStorage.clear()
+                window.location.href = "./index.html"
             }
         }
     }

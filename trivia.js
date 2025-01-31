@@ -12,7 +12,7 @@ let pagination = 10;
 if (started) {
     async function fetchData() {
         try {
-            const response = await fetch(`https://quizapp-vsl6.vercel.app/api/questions/${category}/${pagination}`);
+            const response = await fetch(`http://127.0.0.1:8000/api/questions/${category}/${pagination}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -31,9 +31,6 @@ if (started) {
     });
 } else {
     window.addEventListener('load', () => {
-        // if (JSON.parse(sessionStorage.getItem('page')) == "score"){
-        //     document.getElementsByTagName('body')[0].innerHTML = scorePage(score)
-        // }        
         startTrivia();        
     });
 }
@@ -149,24 +146,11 @@ const endTrivia = (data) => {
         const answeredQuestions = data.find(item => item.id === answer.questionId)
         if (answeredQuestions && answer.selectedOption == answeredQuestions.correct_answer) {
             score = score + 10
-            console.log(answer.selectedOption + ' - Correct');
-        }else{
-            console.log(answer.selectedOption + ' - wrong');
-            
-        } 
+        }
     });
     resetTimer()
-    // sessionStorage.clear()
-    sessionStorage.setItem('page', JSON.stringify('score'))
-    document.getElementsByTagName('body')[0].innerHTML = scorePage(score)
-    console.log(JSON.parse(localStorage.getItem('page')));
-    
-
-    let reviewBtn = document.querySelector(".reviewBtn")
-    alert(reviewBtn)
-    reviewBtn.addEventListener('click', ()=>{
-        naviage('./review.html')
-    })
+    sessionStorage.setItem('score', JSON.stringify(score))
+    window.location.href = "./score-page.html"
     
 }
 
