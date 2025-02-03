@@ -1,19 +1,23 @@
-// Start playing sound on page load
-window.addEventListener('load', () => {
-    const audio = new Audio('./cheddar-entrance.mp3');
-    audio.loop = true;
-    // audio.play();
-});
+import { playSoundAndNavigate } from './script.js';
 
-// This function takes in a url to an audio file and when called, 
-// and plays the sound when the button is clicked
-function playSoundAndNavigate(soundUrl, targetUrl) {
-    const audio = new Audio(soundUrl);
-    audio.play();
-    setTimeout(() => {
-        window.location.href = targetUrl;
-    }, 500);
+if (document.querySelector('.cheddar-logo')) {
+    document.querySelector('.cheddar-logo').addEventListener('click', ()=>{
+        playSoundAndNavigate('./click.wav', '');
+    })
 }
+
+if (document.querySelector('.play-button')) {
+    document.querySelector('.play-button').addEventListener('click', ()=>{
+        playSoundAndNavigate('./click.wav', './user-info.html');
+    })
+}
+
+// Start playing sound on page load
+// window.addEventListener('mouseout', () => {
+//     const audio = new Audio('./entrance-3.mp3');
+//     audio.loop = true;
+//     audio.play();   
+// }, {once:true});
 
 // Custom Pointer Logic
 

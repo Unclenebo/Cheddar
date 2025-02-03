@@ -2,14 +2,13 @@ function naviage(url) {
     window.location.href = url;
 }
 let started = JSON.parse(sessionStorage.getItem('started'))
-
-
 const urlParams = new URLSearchParams(window.location.search);
-category = urlParams.get('category');
+let category = urlParams.get('category');
 let pagination = 10;
 
 // fetch data from the api
 if (started) {
+    sessionStorage.clear()
     async function fetchData() {
         try {
             const response = await fetch(`https://quizapp-vsl6.vercel.app/api/questions/${category}/${pagination}`);
@@ -46,7 +45,6 @@ const startTrivia = () => {
     
     displayQuestion()
     startTimer()
-
 }
 
 const displayQuestion = () => {
@@ -204,5 +202,3 @@ const stopTimer = () => {
     clearInterval(countdownInterval);
     countdownInterval = null;
 }
-
-
