@@ -66,8 +66,7 @@ body{
 }
 
 .primary-btn:hover{
-    background-color: transparent;
-    color: var(--cheedar-yellow);
+    transform: scale(.95);
 }
 
 .primary-btn:active{
