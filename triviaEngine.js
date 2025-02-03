@@ -1,10 +1,19 @@
-function naviage(url) {
-    window.location.href = url;
-}
+import { playSoundAndNavigate } from './script.js';
+import { startGame } from './script.js';
 
 const userForm = document.getElementById('userForm')
 
 if (userForm) {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));  
+    const username = userInfo.username;  
+    const age = userInfo.age; 
+
+    if (username && age) {
+        if (confirm(`Do you wish to continue as ${username}`)) {
+            playSoundAndNavigate('./click.wav', './select-game.html');
+        }
+    } 
+
     userForm.addEventListener('submit', (event) => {
         event.preventDefault();
     
@@ -13,7 +22,7 @@ if (userForm) {
     
         if (username.length > 1 && !isNaN(age) && age.length > 0) {
             localStorage.setItem("userInfo", JSON.stringify({ username, age }));
-            naviage("./select-game.html");
+            playSoundAndNavigate('./click.wav', './select-game.html');
         } else {
             if (username.length <= 1) {
                 alert("Username must be at least 2 characters");
@@ -25,21 +34,19 @@ if (userForm) {
     
 }
 
-// const userInfo = JSON.parse(localStorage.getItem("userInfo"));  
-// const username = userInfo.username;  
-// const age = userInfo.age;  
+const options = document.querySelectorAll('.option');
 
-const startGame = (category) => {
-    let url = "./trivia-section.html";
-    
-    if (category) {
-        url += `?category=${category}`;
-    }
-
-    naviage(url);
-
-    sessionStorage.setItem('started', true)
-    sessionStorage.setItem('page', 'trivia')
-}
-
-
+options.forEach(option =>{
+    option.addEventListener('click', ()=>{
+        if (option.classList.contains('maths')) {
+            startGame('maths')
+            localStorage.setItem('lastGame', JSON.stringify('maths'))
+        }else if (option.classList.contains('english')) {
+            startGame('english')
+            localStorage.setItem('lastGame', JSON.stringify('english'))
+        }else if (option.classList.contains('science')) {
+            startGame('science')
+            localStorage.setItem('lastGame', JSON.stringify('science'))
+        }
+    })
+})

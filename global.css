@@ -12,6 +12,11 @@ a{
     text-decoration: none;
 }
 
+body{
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 :root{
     --cheedar-yellow: #ffe959;
     --cheedar-dark-blue: rgba(27, 24, 34, 1);
@@ -47,9 +52,9 @@ a{
     height: 3.5rem;
     padding: 1rem 1.5rem;
     border: 2px solid rgba(255, 233, 89, 1);
+    background-color: rgba(255, 233, 89, 1);
     border-radius: .6rem;
     outline: none;
-    background-color: rgba(255, 233, 89, 1);
     font-size: 1.5rem;
     font-style: italic;
     font-weight: 600;
@@ -57,6 +62,16 @@ a{
     align-items: center;
     justify-content: center;
     gap: .25rem;
+    transform: .3s;
+}
+
+.primary-btn:hover{
+    background-color: transparent;
+    color: var(--cheedar-yellow);
+}
+
+.primary-btn:active{
+    transform: scale(.9);
 }
 
 /* Custom pointer styles */

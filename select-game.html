@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="./global.css">
     <link rel="stylesheet" href="trivia-section.css">
     <link rel="stylesheet" href="./animatons.css">
-    <script src="./global.js" defer></script>
-    <script src="./triviaEngine.js" defer></script>
-    <script src="./trivia.js" defer></script>
+    <script src="./triviaEngine.js" type="module" defer></script>
+    <script src="./global.js" type="module" defer></script>
     <title>Cheedar - Select</title>
     <style>
         .select-header{
@@ -79,17 +78,17 @@
         <div class="quetion-img-cont"><img src="./Questions.png" alt=""></div>
         <h3 class="select-header">What do you want to practice?</h3>
         <div class="select-cont">
-            <div class="option" onclick="startGame('maths')">
+            <div class="option maths">
                 <div class="select-img-cont"><img src="./maths-option.png" alt=""></div>
                 <span class="label">Maths</span>
                 <span class="detail">Unlock the magic of numbers and become a math wizard!</span>
             </div>
-            <div class="option" onclick="startGame('english')">
+            <div class="option english">
                 <div class="select-img-cont"><img src="./english-option.png" alt=""></div>
                 <span class="label">English</span>
                 <span class="detail">Explore the power of words and let your imagination shine!</span>
             </div>
-            <div class="option" onclick="startGame('science')">
+            <div class="option science">
                 <div class="select-img-cont"><img src="./science-option.png" alt=""></div>
                 <span class="label">Basic Science</span>
                 <span class="detail">Discover the wonders of science and spark your curiosity!</span>
