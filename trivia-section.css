@@ -76,8 +76,9 @@
 }
 
 .quetion-img-cont{
-    width: 100%;
+    width: fit-content;
     display: flex;
+    margin: auto;
     justify-content: center;
 }
 
@@ -128,8 +129,8 @@
 
 .answer-btn:hover,
 .selected {
-    background-color: rgba(255, 233, 89, 1)!important;
-    border: 2px solid  rgba(255, 233, 89, 1)!important;
+    background-color: var(--cheedar-yellow)!important;
+    border: 2px solid  var(--cheedar-yellow)!important;
     color: rgba(21, 21, 27, 1) !important; 
 }
 
@@ -178,7 +179,7 @@
 
 .score-quote{
     width: 20rem;
-    color: rgba(255, 233, 89, 1);
+    color: var(--cheedar-yellow);
     text-align: center;
     font-style: 1.1rem;
     line-height: 1.5;
@@ -199,3 +200,81 @@
     right: 5rem;
 }
 
+
+
+@media (max-width: 780px) {
+
+    
+    .trivia-sect-cont{
+        height: 100vh;
+        padding: 1rem 1rem;
+        position: relative;
+    }
+
+    .nav-bar{
+        margin: 1rem 0rem;
+        margin-bottom: 2rem;
+    }
+
+    .nav-bar .logo-cont{
+        display: none;
+    }
+
+    .icon-button{
+        height: 2.8rem;
+        width: 2.8rem;
+        border-radius: 1rem;
+    }
+
+    .nav-bar .primary-btn img{
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+    .icon-button img{
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+
+    .nav-bar .primary-btn{
+        height: 2.8rem;
+        padding: 1rem 1rem;
+        border-radius: .8rem;
+        font-size: 1rem;
+    }
+
+
+    .quetion-img-cont img{
+        width: 8rem;
+    }
+
+    .trivia-question-cont{
+        height: fit-content;
+        max-width: 90%;
+        padding: 1rem 0rem;
+        margin: 1rem auto;
+    }
+
+    .trivia-question-cont h2{
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .trivia-answer-cont {
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 1.5rem; 
+    }
+
+    .trivia-answer-cont button {
+        height: 50px; 
+        font-size: 1.1rem;
+    }
+
+    .timmer-cont{
+        bottom: 1%;
+    }
+    
+    .timmer-cont span{
+        font-size: 1.5rem;
+    }
+}
