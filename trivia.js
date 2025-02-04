@@ -86,6 +86,17 @@ const displayQuestion = () => {
             })
             button.classList.add('selected')
 
+
+            
+            currentQuestionIndex++;
+            if (currentQuestionIndex >= data.length - 1) {
+            currentQuestionIndex = data.length - 1;
+            }
+            sessionStorage.setItem('currentQuestionIndex', JSON.stringify(currentQuestionIndex));
+            displayQuestion(JSON.parse(sessionStorage.getItem('data')));
+            }
+             
+            
             let selectedOption = button.textContent
             
             const newAnswer = { questionId: questionId, selectedOption: selectedOption };
