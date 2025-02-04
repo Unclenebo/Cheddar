@@ -86,7 +86,7 @@ const displayQuestion = () => {
             })
             button.classList.add('selected')
 
-
+            let data = JSON.parse(sessionStorage.getItem('data'))
             
             currentQuestionIndex++;
             if (currentQuestionIndex >= data.length - 1) {
