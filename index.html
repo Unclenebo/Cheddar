@@ -9,8 +9,7 @@
     <script src="./global.js" type="module" defer></script>
 </head>
 <body>
-
-    <div class="container no-select">
+    <div class="container">
         
         <div class="header">    
             <a href="./index.html" class="cheddar-logo" onclick="event.preventDefault()" ><img src="./cheddy-head 2.png" alt="" class="cheddy-head"></a>
@@ -77,10 +76,20 @@
             });
         });
 
-        window.addEventListener('mouseout', () => {
-            const audio = new Audio('./entrance-3.mp3');
-            audio.loop = true;
-            audio.play();   
+        window.addEventListener('load', () => {
+            const audioFiles = ['./entrance-1.mp3', './entrance-2.mp3', './entrance-3.mp3'];
+            let currentIndex = 0;
+
+            function playAudio() {
+            const audio = new Audio(audioFiles[currentIndex]);
+            audio.play();
+            audio.addEventListener('ended', () => {
+                currentIndex = (currentIndex + 1) % audioFiles.length;
+                playAudio();
+            });
+            }
+
+            playAudio();
         }, {once:true});
     </script>
 </body>
