@@ -12,11 +12,11 @@
     <style>
         .total-point{
             width: fit-content;
-            margin: 2rem auto;
-            font-size: 5rem;
-            font-weight: 500;
+            margin: 1.5rem auto;
+            font-size: 3.5rem;
+            font-weight: 600;
         }
-    
+
         .score-quote{
             width: 20rem;
             color: rgba(255, 233, 89, 1);
@@ -25,7 +25,14 @@
             line-height: 1.5;
             margin: 1rem auto;
         }
-    
+
+        .score-character{
+            width: 23rem;
+            position: absolute;
+            bottom: 0;
+            right: 5rem;
+        }
+
         .button-nav{
             display: flex;
             gap: 1rem;
@@ -33,12 +40,59 @@
             bottom: 7%;
         }
     
-        .score-character{
-            width: 23rem;
-            position: absolute;
-            bottom: 0;
-            right: 5rem;
+
+        @media (max-width: 780px) {
+        .nav-bar{
+            margin: 0rem;
         }
+        
+        .nav-bar .logo-cont{
+            display: block;
+            height: fit-content;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .character-cont{
+            width: fit-content;
+            margin: auto;
+        }
+
+        .score-quote{
+            width: 90%;
+            padding: 1rem 0rem;
+            padding-top: 0rem;
+        }
+
+        .score-character{
+            height: 15rem;
+            width: auto;
+            margin: 1rem auto;
+            position: relative;
+            bottom: auto;
+            right: auto;
+        }
+
+        .trivia-sect-cont{
+            padding: 0rem 0rem;
+            position: relative;
+        }
+
+        .button-nav{
+            margin: auto;
+            width: 95%;
+            display: flex;
+            position: relative;
+            bottom: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .button-nav .primary-btn{
+            font-size: 1.2rem;
+            word-wrap: none;
+        }
+    }
     </style>
 </head>
 <body>
@@ -53,12 +107,14 @@
         <div class="quetion-img-cont"><img src="./Total Score.png" alt=""></div>
         <h1 class="total-point" id="total-point"></h1>
         <p class="score-quote" id="score-quote"></p>
-        <div class="button-nav">
-            <button class="primary-btn replay-btn">Replay</button><a href="./index.html"><button class="primary-btn home-btn">Go to Home</button></a><button class="primary-btn reviewBtn">Review</button>
+        <div class="character-cont">        
+            <img src="" class="score-character" id="score-character" alt="">
         </div>
-        <img src="" class="score-character" id="score-character" alt="">
+        <div class="button-nav">
+            <button class="primary-btn replay-btn">Replay</button><a href="./index.html"><button class="primary-btn home-btn">Home</button></a><button class="primary-btn reviewBtn">Review</button>
+        </div>
     </section>
 
-    <button id="fullscreen-btn" class="fullScreen-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffe959"><path d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z"/></svg></button>
+    <!-- <button id="fullscreen-btn" class="fullScreen-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffe959"><path d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z"/></svg></button> -->
 </body>
 </html>
