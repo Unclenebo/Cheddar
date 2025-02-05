@@ -170,44 +170,14 @@
     color: var(--lighter-text-color);
 }
 
-.total-point{
-    width: fit-content;
-    margin: 2rem auto;
-    font-size: 5rem;
-    font-weight: 500;
-}
 
-.score-quote{
-    width: 20rem;
-    color: var(--cheedar-yellow);
-    text-align: center;
-    font-style: 1.1rem;
-    line-height: 1.5;
-    margin: 1rem auto;
-}
-
-.button-nav{
-    display: flex;
-    gap: 1rem;
-    position: absolute;
-    bottom: 7%;
-}
-
-.score-character{
-    width: 23rem;
-    position: absolute;
-    bottom: 0;
-    right: 5rem;
-}
 
 
 
 @media (max-width: 780px) {
-
-    
     .trivia-sect-cont{
         height: 100vh;
-        padding: 1rem 1rem;
+        padding: 1rem;
         position: relative;
     }
 
