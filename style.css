@@ -46,26 +46,27 @@ ul li {
     box-sizing: border-box;
 }
 
-img{    
-    -webkit-user-drag: none; 
-}
-
 body {
-    height: 1vh;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     background-image: url(./Grid.png);
     background-color: #16141B;
     overflow: hidden;
-    padding: 2.7rem 0rem;
+    padding: 1.5rem 0rem;
 }
 
 .header{
-    width: 100%;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto;
     gap: 2rem;
+}
+
+.header .nav button{
+    display: none;
 }
 
 .header .cheddar-txt{
@@ -73,9 +74,10 @@ body {
 }
 
 .section{
-    width: 100%;
+    width: fit-content;
     display: flex;
     gap: 2rem;
+    margin: auto;
     justify-content: center;
 }
 
@@ -105,6 +107,10 @@ body {
     z-index: 999;
 }
 
+.sect3{
+    width: 249px;
+}
+
 .sect2 img{
     width: 22rem;
     margin-top: -7rem;
@@ -130,16 +136,48 @@ ul {
     list-style: none;
 }
 
-.chesse {
-    margin-top: -25rem;
-    width: 735.16px;
-    height: 300px;
-    z-index: 1;
-}
+@media screen and (max-width: 780px) {
 
-.no-select{
-    user-select: none; 
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
+    .header .nav{
+        width: 85vw;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header .nav button{
+        background-color: var(--cheedar-yellow);
+        width: 45px;
+        height: 45px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+    }
+
+    .header .nav button:active{
+        transform: scale(.95);
+    }
+
+
+    .header .cheddar-txt{
+        width: 90vw;
+        margin-bottom: 1rem;
+    }
+    
+    .section{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .sect2 img{
+        width: 22rem;
+        margin-top: auto;
+    }
+
+    .sect3{
+        display: none;
+    }
 }
