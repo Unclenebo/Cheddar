@@ -14,8 +14,8 @@
         
         <div class="header"> 
             <div class="nav">
-                <a href="./index.html" class="cheddar-logo" onclick="event.preventDefault()" ><img src="./cheddy-head 2.png" alt="" class="cheddy-head"></a>
-                <button><img src="./Icon.svg" button>            
+                <a href="./index.html" class="cheddar-logo" onclick="event.preventDefault()"><img src="./cheddy-head 2.png" alt="" class="cheddy-head"></a>
+                <button class="open-nav"><img src="./Icon.svg"></button>            
             </div>   
             <img src="./Cheddar.png" alt="h1" class="cheddar-txt">
         </div>
@@ -39,7 +39,7 @@
                 <a class="play-button" onclick="event.preventDefault()"><img src="./Property 1=Variant2.png" alt="" class="acrade"></a>
             </div>
             
-            <div class="sect3">
+            <div class="sect3 mNav">
                 <h4>MENU</h4>
                 <div class="navbar">
                     <ul>
@@ -57,8 +57,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // opening and closing the nav
+            let openNav = document.querySelector('.open-nav') || null
+            let mNav = document.querySelector('.mNav') || null
+
+            if (openNav != null && mNav != null){
+                openNav.addEventListener('click', ()=>{
+                    if(openNav.innerHTML == `<img src="./Icon.svg">`){
+                        mNav.style.display = "block";
+                        openNav.innerHTML = '<img src="./close.svg">'
+                    }else{
+                        mNav.style.display = "none";
+                        openNav.innerHTML = '<img src="./Icon.svg">'
+                    }
+                })
+            }
+
             const elements = document.querySelectorAll('.txt');
-        
             elements.forEach(element => {
                 const pointer = element.querySelector('.pointer');
                 const text = element.querySelector('.text');
@@ -80,6 +95,9 @@
             });
         });
 
+    </script>
+
+    <!-- <script>
         window.addEventListener('load', () => {
             const audioFiles = ['./entrance-1.mp3', './entrance-2.mp3', './entrance-3.mp3'];
             let currentIndex = 0;
@@ -95,6 +113,6 @@
 
             playAudio();
         }, {once:true});
-    </script>
+    </script> -->
 </body>
 </html>
