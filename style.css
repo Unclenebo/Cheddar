@@ -39,7 +39,7 @@ body {
     align-items: center;
     background-image: url(./Grid.png);
     background-color: #16141B;
-    overflow: hidden;
+    
     padding: 1.5rem 0rem;
 }
 
@@ -65,6 +65,7 @@ body {
     display: flex;
     gap: 2rem;
     margin: auto;
+    overflow: hidden;
     justify-content: center;
 }
 
