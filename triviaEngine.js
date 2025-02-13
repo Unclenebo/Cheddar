@@ -5,14 +5,12 @@ const userForm = document.getElementById('userForm')
 
 if (userForm) {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));  
-    const username = userInfo.username;  
-    const age = userInfo.age; 
 
-    if (username && age) {
-        if (confirm(`Do you wish to continue as ${username}`)) {
+    if (userInfo) {
+        if (confirm(`Do you wish to continue as ${userInfo.username}`)) {
             playSoundAndNavigate('./click.wav', './select-game.html');
         }
-    } 
+    }
 
     userForm.addEventListener('submit', (event) => {
         event.preventDefault();
